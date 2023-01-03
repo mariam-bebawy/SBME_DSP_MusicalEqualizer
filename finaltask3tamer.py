@@ -272,8 +272,8 @@ class MainWindow(QtWidgets.QMainWindow):
         path = self.fname[0]
         if '.mp3' in path:
             song = AudioSegment.from_mp3(path)
-            song.export(r"C:\Users\ahmed hesham m\OneDrive\Documents\python Task\task3\final.wav", format="wav")
-            self.f_rate, self.yData = wavfile.read(r"C:\Users\ahmed hesham m\OneDrive\Documents\python Task\task3\final.wav")
+            song.export(r"./final.wav", format="wav")
+            self.f_rate, self.yData = wavfile.read(r"./final.wav")
         else:
             self.f_rate, self.yData = wavfile.read(path)
         if  len(self.yData.shape) > 1:
@@ -387,9 +387,9 @@ class MainWindow(QtWidgets.QMainWindow):
             fftFilter = [*fftFilter, *temp]
         self.yAxisData = np.fft.irfft(fftFilter)
         self.p.stop()
-        wavfile.write(r"C:\Users\ahmed hesham m\OneDrive\Documents\python Task\task3\filtered.wav",self.f_rate,self.yAxisData)
+        wavfile.write(r"./filtered.wav",self.f_rate,self.yAxisData)
         self.plot()        
-        self.p = vlc.MediaPlayer(r"C:\Users\ahmed hesham m\OneDrive\Documents\python Task\task3\filtered.wav")
+        self.p = vlc.MediaPlayer(r"./filtered.wav")
 
 # playing the signal 
     def updateSignal(self):
